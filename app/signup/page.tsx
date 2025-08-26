@@ -41,7 +41,7 @@ export default function SignupPage() {
           {/* Social Login Buttons */}
           <div className="space-y-3 mb-6">
             <button 
-              onClick={() => signIn('google', { callbackUrl: '/' })}
+              onClick={() => signIn('google', { callbackUrl: '/dashboard' })}
               className="w-full bg-gray-800 hover:bg-gray-700 border border-gray-700 text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-3"
             >
               <svg className="w-5 h-5" viewBox="0 0 24 24">
@@ -55,7 +55,7 @@ export default function SignupPage() {
             </button>
             
             <button 
-              onClick={() => signIn('github', { callbackUrl: '/' })}
+              onClick={() => signIn('github', { callbackUrl: '/dashboard' })}
               className="w-full bg-gray-800 hover:bg-gray-700 border border-gray-700 text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-3"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">

@@ -24,6 +24,7 @@ module.exports = {
         'gradient-flow': 'gradient-flow 20s ease-in-out infinite',
         'float': 'float 6s ease-in-out infinite',
         'glow': 'glow 2s ease-in-out infinite alternate',
+        'aurora-drift': 'aurora-drift 30s ease-in-out infinite',
       },
       keyframes: {
         'gradient-flow': {
@@ -43,12 +44,23 @@ module.exports = {
         'glow': {
           '0%': { boxShadow: '0 0 20px rgba(0, 245, 212, 0.3)' },
           '100%': { boxShadow: '0 0 30px rgba(0, 245, 212, 0.6)' }
+        },
+        'aurora-drift': {
+          '0%, 100%': {
+            'background-position': '0% 50%',
+            'background-size': '200% 200%'
+          },
+          '50%': {
+            'background-position': '100% 50%',
+            'background-size': '200% 200%'
+          }
         }
       },
       backgroundImage: {
         'radial-gradient': 'radial-gradient(ellipse at center bottom, rgba(0, 245, 212, 0.1) 0%, rgba(0, 255, 136, 0.05) 50%, transparent 100%)',
         'radial-gradient-top': 'radial-gradient(ellipse at top left, rgba(0, 212, 255, 0.08) 0%, transparent 70%)',
         'gradient-teal-lime': 'linear-gradient(135deg, #00f5d4 0%, #00ff88 100%)',
+        'gradient-radial': 'radial-gradient(ellipse at center, var(--tw-gradient-stops))',
       }
     },
   },
