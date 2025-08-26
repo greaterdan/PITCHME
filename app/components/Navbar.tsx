@@ -8,22 +8,19 @@ export default function Navbar() {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      className="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-md"
+      className="fixed top-0 left-0 right-0 z-50"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
+          {/* Logo - Far Left */}
           <motion.div 
             whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-2"
+            className="flex items-center"
           >
-            <div className="w-8 h-8 bg-gradient-teal-lime rounded-lg flex items-center justify-center">
-              <span className="text-black font-bold text-sm">P</span>
-            </div>
-            <span className="font-sora font-bold text-xl text-white">Pitchme.dev</span>
+            <span className="font-sora font-bold text-xl text-white">PitchMe</span>
           </motion.div>
 
-          {/* Navigation Links */}
+          {/* Navigation Links - Far Right */}
           <div className="hidden md:flex items-center space-x-8">
             <motion.a 
               href="#features"
