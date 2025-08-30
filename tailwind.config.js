@@ -19,24 +19,14 @@ module.exports = {
         'sora': ['Sora', 'sans-serif'],
         'clash': ['Clash Display', 'sans-serif'],
         'inter': ['Inter', 'sans-serif'],
+        'readex': ['Readex Pro', 'sans-serif'],
       },
       animation: {
-        'gradient-flow': 'gradient-flow 20s ease-in-out infinite',
         'float': 'float 6s ease-in-out infinite',
         'glow': 'glow 2s ease-in-out infinite alternate',
         'aurora-drift': 'aurora-drift 30s ease-in-out infinite',
       },
       keyframes: {
-        'gradient-flow': {
-          '0%, 100%': {
-            'background-size': '200% 200%',
-            'background-position': 'left center'
-          },
-          '50%': {
-            'background-size': '200% 200%',
-            'background-position': 'right center'
-          }
-        },
         'float': {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-20px)' }
@@ -55,12 +45,6 @@ module.exports = {
             'background-size': '200% 200%'
           }
         }
-      },
-      backgroundImage: {
-        'radial-gradient': 'radial-gradient(ellipse at center bottom, rgba(0, 245, 212, 0.1) 0%, rgba(0, 255, 136, 0.05) 50%, transparent 100%)',
-        'radial-gradient-top': 'radial-gradient(ellipse at top left, rgba(0, 212, 255, 0.08) 0%, transparent 70%)',
-        'gradient-teal-lime': 'linear-gradient(135deg, #00f5d4 0%, #00ff88 100%)',
-        'gradient-radial': 'radial-gradient(ellipse at center, var(--tw-gradient-stops))',
       }
     },
   },

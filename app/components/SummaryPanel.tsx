@@ -3,15 +3,15 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 
-const summaryChips = [
-  { id: 'model', label: 'Model', color: 'bg-blue-500/20 text-blue-400' },
-  { id: 'audience', label: 'Audience', color: 'bg-green-500/20 text-green-400' },
-  { id: 'pricing', label: 'Pricing', color: 'bg-purple-500/20 text-purple-400' },
-  { id: 'gtm', label: 'GTM', color: 'bg-orange-500/20 text-orange-400' },
-  { id: 'ops', label: 'Ops', color: 'bg-red-500/20 text-red-400' },
-  { id: 'legal', label: 'Legal', color: 'bg-yellow-500/20 text-yellow-400' },
-  { id: 'risks', label: 'Risks', color: 'bg-pink-500/20 text-pink-400' },
-  { id: 'metrics', label: 'Metrics', color: 'bg-teal-500/20 text-teal-400' }
+const summaryTabs = [
+  { id: 'model', label: 'Model', color: 'from-blue-500 to-blue-600' },
+  { id: 'audience', label: 'Audience', color: 'from-green-500 to-green-600' },
+  { id: 'pricing', label: 'Pricing', color: 'from-purple-500 to-purple-600' },
+  { id: 'gtm', label: 'GTM', color: 'from-orange-500 to-orange-600' },
+  { id: 'ops', label: 'Ops', color: 'from-red-500 to-red-600' },
+  { id: 'legal', label: 'Legal', color: 'from-yellow-500 to-yellow-600' },
+  { id: 'risks', label: 'Risks', color: 'from-pink-500 to-pink-600' },
+  { id: 'metrics', label: 'Metrics', color: 'from-teal-500 to-teal-600' }
 ]
 
 const summaryContent = {
@@ -26,56 +26,58 @@ const summaryContent = {
 }
 
 export default function SummaryPanel() {
-  const [activeChip, setActiveChip] = useState('model')
+  const [activeTab, setActiveTab] = useState('model')
 
   return (
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-zinc-900/70 backdrop-blur-md border border-white/10 rounded-3xl shadow-[0_10px_30px_rgba(0,0,0,0.35)] h-[52vh] flex flex-col"
+      className="bg-zinc-900/70 backdrop-blur border border-white/10 rounded-2xl shadow-lg h-[52vh] flex flex-col"
     >
       {/* Header */}
       <div className="p-6 border-b border-white/5">
-        <h3 className="text-white font-semibold tracking-tight">Conclusion / Solution</h3>
+        <h3 className="text-white font-bold tracking-tight text-lg mb-4">Conclusion / Solution</h3>
+        
+        {/* Tabs */}
+        <div className="flex flex-wrap gap-2">
+          {summaryTabs.map((tab) => (
+            <motion.button
+              key={tab.id}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setActiveTab(tab.id)}
+              className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-all duration-200 ${
+                activeTab === tab.id 
+                  ? `bg-gradient-to-r ${tab.color} text-white border-transparent shadow-lg` 
+                  : 'bg-zinc-800/50 text-zinc-400 border-white/10 hover:text-white hover:bg-zinc-700/50'
+              }`}
+            >
+              {tab.label}
+            </motion.button>
+          ))}
+        </div>
       </div>
 
       {/* Content */}
       <div className="flex-1 p-6 space-y-6">
-        {/* Chips */}
-        <div className="flex flex-wrap gap-2">
-          {summaryChips.map((chip) => (
-            <motion.button
-              key={chip.id}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setActiveChip(chip.id)}
-              className={`px-3 py-1.5 rounded-full text-xs font-medium border border-white/10 transition-all ${
-                activeChip === chip.id 
-                  ? `${chip.color} border-current` 
-                  : 'bg-zinc-800/50 text-zinc-400 hover:text-white'
-              }`}
-            >
-              {chip.label}
-            </motion.button>
-          ))}
-        </div>
-
-        {/* Active Content */}
+        {/* Active Tab Content */}
         <motion.div
-          key={activeChip}
+          key={activeTab}
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           className="bg-zinc-800/30 rounded-xl p-4 border border-white/5"
         >
-          <h4 className="text-white font-medium mb-2 capitalize">{activeChip}</h4>
+          <h4 className="text-white font-bold mb-3 capitalize">{activeTab}</h4>
           <p className="text-zinc-300 text-sm leading-relaxed">
-            {summaryContent[activeChip as keyof typeof summaryContent]}
+            {summaryContent[activeTab as keyof typeof summaryContent]}
           </p>
         </motion.div>
 
         {/* Mind-map placeholder */}
         <div className="flex-1 bg-zinc-800/20 rounded-xl border border-white/5 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/5 to-transparent opacity-30" />
+          
+          {/* Dotted grid background */}
           <div className="absolute inset-0" style={{
             backgroundImage: `
               radial-gradient(circle at 20% 30%, rgba(0,245,212,0.1) 0%, transparent 50%),
@@ -113,7 +115,7 @@ export default function SummaryPanel() {
           
           <div className="relative z-10 p-6 flex items-center justify-center h-full">
             <div className="text-center">
-              <div className="text-zinc-500 text-sm mb-2">Mind Map Visualization</div>
+              <div className="text-zinc-500 text-sm mb-2 font-medium">Mind Map Visualization</div>
               <div className="text-zinc-600 text-xs">Connections between business elements</div>
             </div>
           </div>

@@ -53,31 +53,32 @@ export default function Conversation() {
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-zinc-900/70 backdrop-blur-md border border-white/10 rounded-3xl shadow-[0_10px_30px_rgba(0,0,0,0.35)] h-[52vh] flex flex-col"
+      className="bg-zinc-900/70 backdrop-blur border border-white/10 rounded-2xl shadow-lg h-[52vh] flex flex-col"
     >
       {/* Header */}
       <div className="p-6 border-b border-white/5">
-        <h3 className="text-white font-semibold tracking-tight">Conversation</h3>
+        <h3 className="text-white font-bold tracking-tight text-lg">Conversation</h3>
       </div>
 
       {/* Messages */}
       <div className="flex-1 overflow-y-auto p-6 space-y-4">
-        {sampleMessages.map((message) => (
+        {sampleMessages.map((message, index) => (
           <motion.div
             key={message.id}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.1 }}
             className={`flex ${message.isUser ? 'justify-end' : 'justify-start'}`}
           >
             <div className={`max-w-[80%] ${message.isUser ? 'order-2' : 'order-1'}`}>
-              <div className={`rounded-2xl px-4 py-3 ${
+              <div className={`rounded-2xl px-4 py-3 shadow-sm ${
                 message.isUser 
-                  ? 'bg-gradient-teal-lime text-black' 
+                  ? 'bg-gradient-to-r from-teal-400 to-blue-500 text-black' 
                   : 'bg-zinc-800/50 border border-white/10 text-zinc-300'
               }`}>
-                <p className="text-sm leading-relaxed">{message.text}</p>
+                <p className="text-sm leading-relaxed font-medium">{message.text}</p>
               </div>
-              <div className={`text-xs text-zinc-500 mt-1 ${
+              <div className={`text-xs text-zinc-500 mt-2 ${
                 message.isUser ? 'text-right' : 'text-left'
               }`}>
                 {message.timestamp}
